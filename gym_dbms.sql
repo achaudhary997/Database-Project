@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 07, 2018 at 05:36 AM
+-- Generation Time: Apr 07, 2018 at 06:30 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -51,7 +51,15 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `quantity` int(11) NOT NULL DEFAULT '1',
   `workingProperly` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`machineID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `equipment`
+--
+
+INSERT INTO `equipment` (`machineID`, `lastMaintenance`, `machineName`, `quantity`, `workingProperly`) VALUES
+(1, '2018-04-07 05:50:55', 'Treadmill', 1, 1),
+(2, '2018-04-07 06:22:26', 'Bench Press', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +102,14 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `Division` varchar(30) NOT NULL,
   `Salary` decimal(10,0) NOT NULL,
   PRIMARY KEY (`employeeID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`employeeID`, `Name`, `Division`, `Salary`) VALUES
+(1, 'Raghav Sharma', 'Trainer', '20000');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
