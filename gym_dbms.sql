@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 07, 2018 at 05:36 AM
+-- Generation Time: Apr 07, 2018 at 10:03 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -32,10 +32,21 @@ DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
   `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
-  `MembershipID` int(11) NOT NULL,
+  `Membership Type` varchar(20) NOT NULL,
   PRIMARY KEY (`CustomerID`),
-  KEY `MembershipID` (`MembershipID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `MembershipID` (`Membership Type`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CustomerID`, `Name`, `Membership Type`) VALUES
+(1, 'Deepak', 'Flex'),
+(2, 'Anubhav', 'Saver'),
+(3, 'Yashit', 'Premium'),
+(4, 'Piyush', 'Flex'),
+(5, 'Maiti', 'Saver');
 
 -- --------------------------------------------------------
 
@@ -51,7 +62,19 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `quantity` int(11) NOT NULL DEFAULT '1',
   `workingProperly` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`machineID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `equipment`
+--
+
+INSERT INTO `equipment` (`machineID`, `lastMaintenance`, `machineName`, `quantity`, `workingProperly`) VALUES
+(1, '2018-04-07 09:16:00', 'Treadmill', 5, 1),
+(2, '2018-04-07 09:16:22', 'Cycle', 10, 1),
+(3, '2018-04-07 09:17:19', 'Abdominal Bench', 1, 1),
+(4, '2018-04-07 09:17:19', 'Bench Press', 2, 1),
+(5, '2018-04-07 09:17:55', 'Dipping Bars', 3, 1),
+(6, '2018-04-07 09:18:13', 'Foam Roller', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -75,11 +98,20 @@ CREATE TABLE IF NOT EXISTS `expenses` (
 
 DROP TABLE IF EXISTS `membership_plans`;
 CREATE TABLE IF NOT EXISTS `membership_plans` (
-  `membershipID` int(11) NOT NULL AUTO_INCREMENT,
   `Cost` decimal(10,0) NOT NULL,
-  `Duration` date NOT NULL,
-  PRIMARY KEY (`membershipID`)
+  `Duration (Months)` int(11) NOT NULL,
+  `Trainer` varchar(20) NOT NULL,
+  `Membership Type` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `membership_plans`
+--
+
+INSERT INTO `membership_plans` (`Cost`, `Duration (Months)`, `Trainer`, `Membership Type`) VALUES
+('5000', 5, 'Jackie Chan', 'Saver'),
+('10000', 5, 'Bruce Li', 'Premium'),
+('7500', 5, 'Will Smith', 'Flex');
 
 -- --------------------------------------------------------
 
