@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 07, 2018 at 10:03 AM
+-- Generation Time: Apr 07, 2018 at 10:10 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -32,16 +32,16 @@ DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
   `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
-  `Membership Type` varchar(20) NOT NULL,
+  `MembershipType` varchar(20) NOT NULL,
   PRIMARY KEY (`CustomerID`),
-  KEY `MembershipID` (`Membership Type`)
+  KEY `MembershipID` (`MembershipType`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CustomerID`, `Name`, `Membership Type`) VALUES
+INSERT INTO `customer` (`CustomerID`, `Name`, `MembershipType`) VALUES
 (1, 'Deepak', 'Flex'),
 (2, 'Anubhav', 'Saver'),
 (3, 'Yashit', 'Premium'),
@@ -99,16 +99,16 @@ CREATE TABLE IF NOT EXISTS `expenses` (
 DROP TABLE IF EXISTS `membership_plans`;
 CREATE TABLE IF NOT EXISTS `membership_plans` (
   `Cost` decimal(10,0) NOT NULL,
-  `Duration (Months)` int(11) NOT NULL,
+  `Duration` int(11) NOT NULL,
   `Trainer` varchar(20) NOT NULL,
-  `Membership Type` varchar(20) NOT NULL
+  `MembershipType` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `membership_plans`
 --
 
-INSERT INTO `membership_plans` (`Cost`, `Duration (Months)`, `Trainer`, `Membership Type`) VALUES
+INSERT INTO `membership_plans` (`Cost`, `Duration`, `Trainer`, `MembershipType`) VALUES
 ('5000', 5, 'Jackie Chan', 'Saver'),
 ('10000', 5, 'Bruce Li', 'Premium'),
 ('7500', 5, 'Will Smith', 'Flex');

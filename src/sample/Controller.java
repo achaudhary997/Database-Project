@@ -17,7 +17,7 @@ public class Controller {
     public TextArea queryTextArea;
     public ChoiceBox condRel;
     public ChoiceBox orderOptions;
-
+    public StringBuilder q;
     public void showQuery() {
         queryButton.setText("Works");
         evaluateQuery();
@@ -28,7 +28,7 @@ public class Controller {
         String[] tables = tableName.getText().toString().split(",");
         String[] columns = attributes.getText().toString().split(",");
 
-        StringBuilder q = new StringBuilder(2048);
+        q = new StringBuilder(2048);
         q.append("SELECT ");
         for (int i = 0 ; i < columns.length - 1; ++i) {
             q.append(columns[i].trim() + ", ");
@@ -87,7 +87,7 @@ public class Controller {
                     "jdbc:mysql://localhost:3306/gym_dbms", "root", ""
             );
             Statement stmt = con.createStatement();
-            ResultSet resultSet = stmt.executeQuery("SELECT * FROM equipment");
+            ResultSet resultSet = stmt.executeQuery(q.toString());
             ResultSetMetaData rsmd = resultSet.getMetaData();
             while (resultSet.next()) {
                 for (int i = 1; i <= rsmd.getColumnCount(); ++i) {
