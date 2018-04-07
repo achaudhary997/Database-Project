@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
-  `CustomerID` int(11) NOT NULL,
+  `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   `MembershipID` int(11) NOT NULL,
   PRIMARY KEY (`CustomerID`),
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE IF NOT EXISTS `equipment` (
-  `machineID` int(11) NOT NULL,
+  `machineID` int(11) NOT NULL AUTO_INCREMENT,
   `lastMaintenance` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `machineName` varchar(30) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `equipment` (
 
 DROP TABLE IF EXISTS `expenses`;
 CREATE TABLE IF NOT EXISTS `expenses` (
-  `ExpenseID` int(11) NOT NULL,
+  `ExpenseID` int(11) NOT NULL AUTO_INCREMENT,
   `Purpose` varchar(30) NOT NULL,
   `Amount` decimal(10,0) NOT NULL,
   PRIMARY KEY (`ExpenseID`)
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `expenses` (
 
 DROP TABLE IF EXISTS `membership_plans`;
 CREATE TABLE IF NOT EXISTS `membership_plans` (
-  `membershipID` int(11) NOT NULL,
+  `membershipID` int(11) NOT NULL AUTO_INCREMENT,
   `Cost` decimal(10,0) NOT NULL,
   `Duration` date NOT NULL,
   PRIMARY KEY (`membershipID`)
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `membership_plans` (
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
-  `employeeID` int(11) NOT NULL,
+  `employeeID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   `Division` varchar(30) NOT NULL,
   `Salary` decimal(10,0) NOT NULL,
