@@ -12,8 +12,6 @@
       <Button fx:id="queryButton" layoutX="374.0" layoutY="105.0" mnemonicParsing="false" onAction="#showQuery" text="Query" />
       <TableView fx:id="queryResultTable" layoutX="14.0" layoutY="142.0" prefHeight="445.0" prefWidth="771.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
    </children>
