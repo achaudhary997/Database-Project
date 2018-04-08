@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 07, 2018 at 10:10 AM
+-- Generation Time: Apr 08, 2018 at 07:19 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `MembershipType` varchar(20) NOT NULL,
   PRIMARY KEY (`CustomerID`),
   KEY `MembershipID` (`MembershipType`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
@@ -46,7 +46,9 @@ INSERT INTO `customer` (`CustomerID`, `Name`, `MembershipType`) VALUES
 (2, 'Anubhav', 'Saver'),
 (3, 'Yashit', 'Premium'),
 (4, 'Piyush', 'Flex'),
-(5, 'Maiti', 'Saver');
+(5, 'Maiti', 'Saver'),
+(6, 'Dank', 'Premium'),
+(7, 'Diff', 'Saver');
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,23 @@ CREATE TABLE IF NOT EXISTS `expenses` (
   `Purpose` varchar(30) NOT NULL,
   `Amount` decimal(10,0) NOT NULL,
   PRIMARY KEY (`ExpenseID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`ExpenseID`, `Purpose`, `Amount`) VALUES
+(1, 'Salary', '5000000'),
+(2, 'Salary', '100000'),
+(3, 'Salary', '5000000'),
+(4, 'Maintenance', '40000'),
+(5, 'Maintenance', '300000'),
+(6, 'Salary', '100000'),
+(7, 'Maintenance', '20000'),
+(8, 'Maintenance', '20000'),
+(9, 'Salary', '5000000'),
+(10, 'Maintenance', '20000');
 
 -- --------------------------------------------------------
 
@@ -111,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `membership_plans` (
 INSERT INTO `membership_plans` (`Cost`, `Duration`, `Trainer`, `MembershipType`) VALUES
 ('5000', 5, 'Jackie Chan', 'Saver'),
 ('10000', 5, 'Bruce Li', 'Premium'),
-('7500', 5, 'Will Smith', 'Flex');
+('7500', 5, 'Will Smith', 'Flex'),
+('2000', 5, 'Mukesh Ambani', 'Suicide');
 
 -- --------------------------------------------------------
 
@@ -126,7 +145,18 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `Division` varchar(30) NOT NULL,
   `Salary` decimal(10,0) NOT NULL,
   PRIMARY KEY (`employeeID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`employeeID`, `Name`, `Division`, `Salary`) VALUES
+(1, 'Jackie Chan', 'Trainer', '5000000'),
+(2, 'Bruce Li', 'Trainer', '5000000'),
+(3, 'Will Smith', 'Trainer', '5000000'),
+(4, 'Laka', 'Maintenance', '100000'),
+(5, 'Bisht', 'Maintenance', '100000');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
