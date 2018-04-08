@@ -17,7 +17,10 @@ public class Controller {
     public TextArea queryTextArea;
     public ChoiceBox condRel;
     public ChoiceBox orderOptions;
-    public StringBuilder q;
+    public ChoiceBox multOption;
+    public Button nextButton;
+    public int intersectFlag = 0;
+    public StringBuilder q = new StringBuilder(2048);
     public void showQuery() {
         queryButton.setText("Works");
         evaluateQuery();
@@ -28,7 +31,6 @@ public class Controller {
         String[] tables = tableName.getText().toString().split(",");
         String[] columns = attributes.getText().toString().split(",");
 
-        q = new StringBuilder(2048);
         q.append("SELECT ");
         for (int i = 0 ; i < columns.length - 1; ++i) {
             q.append(columns[i].trim() + ", ");
@@ -67,8 +69,8 @@ public class Controller {
             if (condRel.getValue().toString().equals("substring")) {
                 q.append("LIKE '%" + condComp.getText().toString() + "%'");
             }
-            if (condRel.getValue().toString().equals("wordmatch")) {
-                q.append("= " + condComp.toString());
+            if (condRel.getValue().toString().equals("word match")) {
+                q.append("= '" + condComp.getText().toString() +"'");
             }
         }
         if (orderOptions.getValue() != null) {
@@ -77,7 +79,47 @@ public class Controller {
                 q.append(" DESC");
             }
         }
+        if (intersectFlag == 1) {
+            q.append(")");
+            intersectFlag = 0;
+        }
         queryTextArea.setText(q.toString());
+    }
+
+    public void storeResults() {
+        parseQuery();
+        if (multOption.getValue().toString().compareTo("Union") == 0) {
+            q.append("\nUNION\n");
+        }
+        else if (multOption.getValue().toString().compareTo("Intersect") == 0) {
+            if (attributes.getText().toString().split(",").length > 1) {
+                System.out.println("error");
+                System.exit(1);
+            }
+            q.append(" WHERE " + attributes.getText().toString().split(",")[0] + " IN (");
+            intersectFlag = 1;
+        }
+        else if (multOption.getValue().toString().compareTo("Except") == 0) {
+            q.append(" WHERE " + attributes.getText().toString().split(",")[0] + " NOT IN (");
+            intersectFlag = 1;
+        }
+        resetAll();
+    }
+
+    public void newQuery() {
+        q = new StringBuilder(2048);
+        resetAll();
+    }
+
+    public void resetAll() {
+        tableName.setText("");
+        attributes.setText("");
+        condAttribute.setText("");
+        condComp.setText("");
+        condRel.setValue(null);
+        orderingAtt.setText("");
+        orderOptions.setValue(null);
+        queryTextArea.setText("");
     }
 
     public void evaluateQuery() {
@@ -97,6 +139,8 @@ public class Controller {
                 System.out.println();
             }
             con.close();
+            q = new StringBuilder();
+            resetAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
