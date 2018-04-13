@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 import java.sql.*;
 
@@ -9,9 +10,15 @@ public class InsertController {
     public TextField username;
     public PasswordField password;
     public Button queryButton;
+    public Pane customerPane;
+    public Pane equipmentPane;
+    public Pane expensesPane;
+    public Pane membershipPlansPane;
+    public Pane staffPane;
 
     public void showQuery() {
         queryButton.setText("Works");
+        customerPane.setVisible(false);
         evaluateQuery();
     }
 

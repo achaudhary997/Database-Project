@@ -67,7 +67,7 @@
       <Button layoutX="166.0" layoutY="348.0" mnemonicParsing="false" onAction="#newQuery" text="Reset Query" />
       <Label layoutX="16.0" layoutY="116.0" text="Table Names: customer, equipment, expenses, membership_plans, staff" />
       <Label layoutX="548.0" layoutY="140.0" prefHeight="17.0" prefWidth="122.0" text="Aggregrate Functions" />
-      <ChoiceBox fx:id="aggreDropDown" layoutX="280.0" layoutY="200.0" prefWidth="150.0" >
+      <ChoiceBox fx:id="aggreDropDown" layoutX="280.0" layoutY="200.0" prefWidth="150.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="SUM" />
@@ -79,5 +79,6 @@
       <Label layoutX="799.0" layoutY="171.0" text="GROUP BY" />
       <TextField fx:id="aggreAttribute" layoutX="530.0" layoutY="200.0" />
       <TextField fx:id="groupBy" layoutX="781.0" layoutY="200.0" />
+      <Button fx:id="adminPageLink" layoutX="1072.0" layoutY="14.0" onAction="#showAdminPage" text="Go to Admin Page" />
    </children>
 </Pane>

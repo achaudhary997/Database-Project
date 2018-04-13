@@ -29,13 +29,53 @@
           </items>
       </ChoiceBox>
       <PasswordField fx:id="password" layoutX="630.0" layoutY="47.0" />
-      <Button fx:id="queryButton" layoutX="559.0" layoutY="329.0" mnemonicParsing="false" text="Query" />
-      <Pane fx:id="customerPane" layoutX="161.0" layoutY="142.0" prefHeight="56.0" prefWidth="876.0">
+      <Button fx:id="queryButton" layoutX="559.0" layoutY="329.0" mnemonicParsing="false" onAction="#showQuery" text="Query" />
+      <Pane fx:id="customerPane" layoutX="161.0" layoutY="142.0" prefHeight="56.0" prefWidth="876.0" visible="false">
          <children>
             <Label layoutX="28.0" layoutY="20.0" text="Member Name" />
             <Label layoutX="447.0" layoutY="20.0" text="Membership Type" />
+            <TextField fx:id="memberName" layoutX="122.0" layoutY="16.0" />
+            <TextField fx:id="memberType" layoutX="558.0" layoutY="16.0" />
          </children>
       </Pane>
+      <Pane fx:id="equipmentPane" layoutX="150.0" layoutY="142.0" prefHeight="98.0" prefWidth="876.0" visible="false">
+         <children>
+            <Label layoutX="20.0" layoutY="14.0" text="Machine Name" />
+            <Label layoutX="424.0" layoutY="14.0" text="Quantity" />
+            <Label layoutX="20.0" layoutY="56.0" text="Working Properly" />
+            <TextField fx:id="machineName" layoutX="140.0" layoutY="10.0" />
+            <TextField fx:id="quantity" layoutX="481.0" layoutY="10.0" />
+            <TextField fx:id="workingProperly" layoutX="140.0" layoutY="52.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="expensesPane" layoutX="125.0" layoutY="142.0" prefHeight="50.0" prefWidth="966.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="17.0" text="Purpose" />
+            <Label layoutX="493.0" layoutY="17.0" text="Amount" />
+            <TextField fx:id="purpose" layoutX="72.0" layoutY="13.0" />
+            <TextField fx:id="amount" layoutX="552.0" layoutY="13.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="membershipPlansPane" layoutX="63.0" layoutY="122.0" prefHeight="98.0" prefWidth="1052.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Cost" />
+            <Label layoutX="511.0" layoutY="14.0" text="Duration" />
+            <Label layoutX="12.0" layoutY="46.0" text="Trainer" />
+            <Label layoutX="511.0" layoutY="46.0" text="Membership Types" />
+            <TextField fx:id="cost" layoutX="72.0" layoutY="10.0" />
+            <TextField fx:id="duration" layoutX="627.0" layoutY="10.0" />
+            <TextField fx:id="trainer" layoutX="72.0" layoutY="42.0" />
+            <TextField fx:id="membershipType" layoutX="627.0" layoutY="42.0" />
+         </children></Pane>
+      <Pane fx:id="staffPane" layoutX="61.0" layoutY="120.0" prefHeight="98.0" prefWidth="1052.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Name" />
+            <Label layoutX="498.0" layoutY="14.0" text="Division" />
+            <Label layoutX="15.0" layoutY="54.0" text="Salary" />
+            <TextField fx:id="staffName" layoutX="76.0" layoutY="10.0" />
+            <TextField fx:id="staffDivision" layoutX="559.0" layoutY="10.0" />
+            <TextField fx:id="staffSalary" layoutX="76.0" layoutY="50.0" />
+         </children></Pane>
     </children>
 
 </AnchorPane>

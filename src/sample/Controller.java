@@ -4,12 +4,23 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 import java.sql.*;
 
 public class Controller {
@@ -205,6 +216,21 @@ public class Controller {
             con.close();
             q = new StringBuilder();
             resetAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void showAdminPage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("insert.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Admin Page");
+            stage.setScene(new Scene(root1));
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
