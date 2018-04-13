@@ -10,7 +10,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.util.Callback;
 import javafx.scene.control.*;
-
 import java.sql.*;
 
 public class Controller {
