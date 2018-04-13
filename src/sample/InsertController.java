@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
@@ -15,6 +16,8 @@ public class InsertController {
     public Pane expensesPane;
     public Pane membershipPlansPane;
     public Pane staffPane;
+
+
 
     public void showQuery() {
         queryButton.setText("Works");
@@ -33,6 +36,13 @@ public class InsertController {
             con.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void showProperPane(ActionEvent actionEvent) {
+        String tableNameSelected = (String) tableName.getValue();
+        switch (tableNameSelected) {
+            
         }
     }
 }

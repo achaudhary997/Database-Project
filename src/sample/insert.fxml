@@ -17,7 +17,7 @@
         <TextField fx:id="username" layoutX="395.0" layoutY="47.0" />
       <Label layoutX="328.0" layoutY="51.0" text="Username" />
       <Label layoutX="489.0" layoutY="85.0" text="Add a new" />
-      <ChoiceBox fx:id="tableName" layoutX="563.0" layoutY="81.0" prefWidth="150.0">
+      <ChoiceBox fx:id="tableName" layoutX="563.0" layoutY="81.0" onAction="#showProperPane" prefWidth="150.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
               <String fx:value="customer" />
