@@ -41,8 +41,43 @@ public class InsertController {
 
     public void showProperPane(ActionEvent actionEvent) {
         String tableNameSelected = (String) tableName.getValue();
+//        System.out.println(tableNameSelected);
         switch (tableNameSelected) {
-            
+            case "customer":
+                customerPane.setVisible(true);
+                expensesPane.setVisible(false);
+                membershipPlansPane.setVisible(false);
+                equipmentPane.setVisible(false);
+                staffPane.setVisible(false);
+                break;
+            case "expenses":
+                customerPane.setVisible(false);
+                expensesPane.setVisible(true);
+                membershipPlansPane.setVisible(false);
+                equipmentPane.setVisible(false);
+                staffPane.setVisible(false);
+                break;
+            case "membership_plans":
+                customerPane.setVisible(false);
+                expensesPane.setVisible(false);
+                membershipPlansPane.setVisible(true);
+                equipmentPane.setVisible(false);
+                staffPane.setVisible(false);
+                break;
+            case "equipment":
+                customerPane.setVisible(false);
+                expensesPane.setVisible(false);
+                membershipPlansPane.setVisible(false);
+                equipmentPane.setVisible(true);
+                staffPane.setVisible(false);
+                break;
+            case "staff":
+                customerPane.setVisible(false);
+                expensesPane.setVisible(false);
+                membershipPlansPane.setVisible(false);
+                equipmentPane.setVisible(false);
+                staffPane.setVisible(true);
+                break;
         }
     }
 }
