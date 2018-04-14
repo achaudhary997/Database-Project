@@ -20,9 +20,30 @@ public class InsertController {
 
 
     public void showQuery() {
-        queryButton.setText("Works");
-        customerPane.setVisible(false);
-        evaluateQuery();
+        String pane = getCurrentlyVisiblePane();
+        if (pane.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Table Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a table to insert into!");
+            alert.showAndWait();
+            return;
+        }
+    }
+
+    private String getCurrentlyVisiblePane() {
+        if (customerPane.isVisible()) {
+            return "customerPane";
+        } else if (equipmentPane.isVisible()) {
+            return "equipmentPane";
+        } else if (expensesPane.isVisible()) {
+            return "expensesPane";
+        } else if (membershipPlansPane.isVisible()) {
+            return "membershipPlansPane";
+        } else if (staffPane.isVisible()) {
+            return "staffPane";
+        }
+        return "";
     }
 
     public void evaluateQuery() {
