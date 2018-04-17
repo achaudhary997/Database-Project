@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 08, 2018 at 09:09 AM
+-- Generation Time: Apr 17, 2018 at 06:00 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   `MembershipType` varchar(20) NOT NULL,
+  `MembershipFee` int(11) NOT NULL,
   PRIMARY KEY (`CustomerID`),
   KEY `MembershipID` (`MembershipType`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
@@ -41,14 +42,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CustomerID`, `Name`, `MembershipType`) VALUES
-(1, 'Deepak', 'Flex'),
-(2, 'Anubhav', 'Saver'),
-(3, 'Yashit', 'Premium'),
-(4, 'Piyush', 'Flex'),
-(5, 'Maiti', 'Saver'),
-(6, 'Dank', 'Premium'),
-(7, 'Diff', 'Saver');
+INSERT INTO `customer` (`CustomerID`, `Name`, `MembershipType`, `MembershipFee`) VALUES
+(1, 'Deepak', 'Flex', 7500),
+(2, 'Anubhav', 'Saver', 5000),
+(3, 'Yashit', 'Premium', 10000),
+(4, 'Piyush', 'Flex', 7500),
+(5, 'Maiti', 'Saver', 5000),
+(6, 'Dank', 'Premium', 10000),
+(7, 'Diff', 'Saver', 5000);
 
 -- --------------------------------------------------------
 
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `equipment` (
   `machineName` varchar(30) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '1',
   `workingProperly` tinyint(1) DEFAULT '1',
+  `MaintenanceCost` int(11) NOT NULL,
   PRIMARY KEY (`machineID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
@@ -70,13 +72,13 @@ CREATE TABLE IF NOT EXISTS `equipment` (
 -- Dumping data for table `equipment`
 --
 
-INSERT INTO `equipment` (`machineID`, `lastMaintenance`, `machineName`, `quantity`, `workingProperly`) VALUES
-(1, '2018-04-07 09:16:00', 'Treadmill', 5, 1),
-(2, '2018-04-07 09:16:22', 'Cycle', 10, 1),
-(3, '2018-04-07 09:17:19', 'Abdominal Bench', 1, 1),
-(4, '2018-04-07 09:17:19', 'Bench Press', 2, 1),
-(5, '2018-04-07 09:17:55', 'Dipping Bars', 3, 1),
-(6, '2018-04-07 09:18:13', 'Foam Roller', 5, 1);
+INSERT INTO `equipment` (`machineID`, `lastMaintenance`, `machineName`, `quantity`, `workingProperly`, `MaintenanceCost`) VALUES
+(1, '2018-04-07 09:16:00', 'Treadmill', 5, 1, 40000),
+(2, '2018-04-07 09:16:22', 'Cycle', 10, 1, 300000),
+(3, '2018-04-07 09:17:19', 'Abdominal Bench', 1, 1, 20000),
+(4, '2018-04-07 09:17:19', 'Bench Press', 2, 1, 50000),
+(5, '2018-04-07 09:17:55', 'Dipping Bars', 3, 1, 45000),
+(6, '2018-04-07 09:18:13', 'Foam Roller', 5, 1, 25000);
 
 -- --------------------------------------------------------
 
@@ -89,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `expenses` (
   `ExpenseID` int(11) NOT NULL AUTO_INCREMENT,
   `Purpose` varchar(30) NOT NULL,
   `Amount` decimal(10,0) NOT NULL,
+  `Type` varchar(20) NOT NULL,
   PRIMARY KEY (`ExpenseID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
@@ -96,17 +99,17 @@ CREATE TABLE IF NOT EXISTS `expenses` (
 -- Dumping data for table `expenses`
 --
 
-INSERT INTO `expenses` (`ExpenseID`, `Purpose`, `Amount`) VALUES
-(1, 'Salary', '5000000'),
-(2, 'Salary', '100000'),
-(3, 'Salary', '5000000'),
-(4, 'Maintenance', '40000'),
-(5, 'Maintenance', '300000'),
-(6, 'Salary', '100000'),
-(7, 'Maintenance', '20000'),
-(8, 'Maintenance', '20000'),
-(9, 'Salary', '5000000'),
-(10, 'Maintenance', '20000');
+INSERT INTO `expenses` (`ExpenseID`, `Purpose`, `Amount`, `Type`) VALUES
+(1, 'Salary', '5000000', 'debit'),
+(2, 'Salary', '100000', 'debit'),
+(3, 'Salary', '5000000', 'debit'),
+(4, 'Maintenance', '40000', 'debit'),
+(5, 'Maintenance', '300000', 'debit'),
+(6, 'Salary', '100000', 'debit'),
+(7, 'Maintenance', '20000', 'debit'),
+(8, 'Maintenance', '20000', 'debit'),
+(9, 'Salary', '5000000', 'debit'),
+(10, 'Maintenance', '20000', 'debit');
 
 -- --------------------------------------------------------
 
@@ -153,8 +156,8 @@ CREATE TABLE IF NOT EXISTS `staff` (
 
 INSERT INTO `staff` (`employeeID`, `Name`, `Division`, `Salary`) VALUES
 (1, 'Jackie Chan', 'Trainer', '5000000'),
-(2, 'Bruce Li', 'Trainer', '5000000'),
-(3, 'Will Smith', 'Trainer', '5000000'),
+(2, 'Bruce Li', 'Trainer', '5500000'),
+(3, 'Will Smith', 'Trainer', '6000000'),
 (4, 'Laka', 'Maintenance', '100000'),
 (5, 'Bisht', 'Maintenance', '100000');
 COMMIT;
